@@ -1,2 +1,5 @@
-export class PanneEquipementKey {
+export interface PanneEquipementKey {
+  materialId: number;
+  panneId: number;
+  description: string;
 }

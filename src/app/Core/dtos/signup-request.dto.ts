@@ -1,2 +1,2 @@
-export class SignupRequest {
+export interface SignupRequest {
 }

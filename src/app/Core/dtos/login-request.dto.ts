@@ -1,2 +1,2 @@
-export class LoginRequest {
+export interface LoginRequest {
 }

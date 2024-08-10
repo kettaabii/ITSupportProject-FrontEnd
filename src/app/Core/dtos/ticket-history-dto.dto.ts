@@ -1,2 +1,2 @@
-export class TicketHistoryDto {
+export interface TicketHistoryDto {
 }
