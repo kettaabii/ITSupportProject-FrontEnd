@@ -16,11 +16,15 @@ export class TechnicianService {
     return this.http.post(`${this.baseUrl}/admin/newTechnician`,technician,{responseType:'text'});
   }
 
-  updateTechnician(id:number ,technician:SignupRequest): Observable<Technician>{
+  updateTechnician(id:number ,technician:SignupRequest): Observable<any>{
     return this.http.put(`${this.baseUrl}/admin/updateTechnician/${id}`,technician);
   }
 
   deleteTechnician(id:number):Observable<string>{
     return this.http.delete(`${this.baseUrl}/admin/deleteTechnician/${id}`, {responseType:'text'});
+  }
+
+  getAvailableTechnicians():Observable<Technician[]>{
+    return this.http.get<Technician[]>(`${this.baseUrl}/admin/AvailableTechnicians`);
   }
 }

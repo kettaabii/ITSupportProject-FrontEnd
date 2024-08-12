@@ -1,0 +1,119 @@
+.nav-bar {
+  background-color: #4fd1c5;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  flex-wrap: wrap;
+  padding: 0 1rem 6px 12px;
+  align-content : center;
+}
+
+.user-info {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  padding: 4px 29px 4px 4px;
+
+}
+
+.user-avatar {
+  aspect-ratio: 1;
+
+  width: 41px;
+  border-radius: 1000px;
+}
+
+.user-details {
+  display: flex;
+}
+
+.welcome-text {
+
+  color: #fafafa;
+  font: 400 15px/2 Mallanna, sans-serif;
+}
+
+.user-name {
+
+  color: #4d4f4f;
+  margin-top: 7px;
+  font: 600 20px/1.4 Mada, sans-serif;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #00c7be;
+  margin: auto 0 auto auto;
+  font: 500 16px/1 Inter, sans-serif;
+}
+
+.nav-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 24px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.nav-icon:nth-child(2) {
+  aspect-ratio: 0.94;
+  width: 29px;
+}
+
+.logout-button {
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #f1f1f4;
+  background-color: #f9f9f9;
+  align-self: stretch;
+  display: flex;
+  min-height: 41px;
+  gap: 6px;
+  overflow: hidden;
+  justify-content: start;
+  padding: 11px 16px;
+  cursor: pointer;
+}
+
+.logout-button span {
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.logout-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  width: 20px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+@media (max-width: 991px) {
+  .nav-bar {
+    padding-right: 20px;
+    white-space: initial;
+  }
+
+  .user-info {
+    padding-right: 20px;
+    white-space: initial;
+  }
+
+  .user-details,
+  .nav-actions,
+  .logout-button {
+    white-space: initial;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-actions {
+    margin-left: 103px;
+  }
+
+  .logout-button {
+    margin: -4px 0 0 3px;
+  }
+}

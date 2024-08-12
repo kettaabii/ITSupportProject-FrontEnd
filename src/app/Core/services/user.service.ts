@@ -1,9 +1,25 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {SignupRequest} from "../dtos/signup-request.dto";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private baseUrl='http://localhost:8088'
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  newUser(user:SignupRequest): Observable<string>{
+    return this.http.post(`${this.baseUrl}/admin/newUser`,user,{responseType:'text'});
+  }
+
+  updateUser(id:number,user:SignupRequest):Observable<string>{
+    return this.http.put(`${this.baseUrl}/admin/updateUser/${id}`,user,{responseType:'text'});
+  }
+
+  deleteUser(id:number):Observable<string>{
+    return this.http.delete(`${this.baseUrl}/admin/deleteUser/${id}`,{responseType:'text'});
+  }
 }

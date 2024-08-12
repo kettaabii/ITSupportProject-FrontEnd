@@ -3,7 +3,7 @@ import {User} from "./user";
 import {Technician} from "./technician";
 import {EquipementPanne} from "./equipement-panne";
 
-export class Ticket {
+export interface Ticket {
   id: number;
   statusTicket: StatusTicket;
   dateCreation: Date;

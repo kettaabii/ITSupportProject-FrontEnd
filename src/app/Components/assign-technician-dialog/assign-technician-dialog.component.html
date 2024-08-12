@@ -1,0 +1,11 @@
+<h2>Select a Technician</h2>
+<mat-radio-group [(ngModel)]="selectedTechnician">
+  <mat-radio-button *ngFor="let technician of technicians" [value]="technician">
+    {{ technician.username}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<div class="dialog-actions">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="assignTechnician()">Assign</button>
+</div>

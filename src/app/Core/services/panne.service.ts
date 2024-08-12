@@ -12,8 +12,8 @@ export class PanneService {
   constructor(private http:HttpClient) { }
 
   signaler(description: string, idMat: number, idPanne: number, idUser: number): Observable<string> {
-   const params ={description,idMat,idPanne}
-    return this.http.post(`${this.baseUrl}/user/signaler/${idUser}`,null,{params,responseType:'text'});
+   const params ={description,idPanne}
+    return this.http.post(`${this.baseUrl}/user/signaler/${idMat}/${idUser}`,null,{params,responseType:'text'});
   }
 
   newPanne(panne:Panne) : Observable<Panne> {
@@ -29,7 +29,7 @@ export class PanneService {
   }
 
   getAllPannes() :Observable<Panne[]>{
-   return this.http.get<Panne[]>(`${this.baseUrl}/admin/allPanne`);
+   return this.http.get<Panne[]>(`${this.baseUrl}/shared/allPanne`);
   }
 
 }
