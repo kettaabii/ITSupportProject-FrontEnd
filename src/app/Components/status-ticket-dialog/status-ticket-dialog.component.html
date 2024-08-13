@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Statut du Ticket</h2>
+<mat-dialog-content>
+  <p><strong>Date de signalement :</strong> {{ data.dateSignalement| date:'medium' }}</p>
+  <p><strong>Status:</strong> {{ data.statusTicket }}</p>
+  <p><strong>Description:</strong> {{ data.panneDescription }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

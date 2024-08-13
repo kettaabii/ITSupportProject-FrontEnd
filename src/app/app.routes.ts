@@ -7,7 +7,9 @@ import {UserComponent} from "./Components/user/user.component";
 import {UnautorizedComponent} from "./Components/unautorized/unautorized.component";
 import {adminGuard, technicianGuard, userGuard} from "./Core/Guard/auth.guard";
 import {PendingTicketsComponent} from "./Components/pending-tickets/pending-tickets.component";
-import {SignalerTicketComponent} from "./Components/signaler-ticket/signaler-ticket.component";
+import {SignalerTicketComponent} from "./Components/signaler-ticket-dialog/signaler-ticket.component";
+import {ListOfUserMaterialsComponent} from "./Components/list-of-user-materials/list-of-user-materials.component";
+import {AddUserFormComponent} from "./Components/add-user-form/add-user-form.component";
 
 export const routes: Routes = [
   {
@@ -27,6 +29,11 @@ export const routes: Routes = [
         path :"pending-tickets",
         component:PendingTicketsComponent,
         canActivate:[adminGuard]
+      },
+      {
+        path :"add-new-user",
+        component:AddUserFormComponent,
+        canActivate:[adminGuard]
       }
     ]
   },
@@ -43,8 +50,8 @@ export const routes: Routes = [
     children :[
       {
         path :"",
-        component:SignalerTicketComponent,
-        canActivate:[userGuard]
+        component:ListOfUserMaterialsComponent,
+
       }
     ]
   },

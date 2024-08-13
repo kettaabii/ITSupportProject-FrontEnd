@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {LoginComponent} from "./Components/login/login.component";
 import {SidebarComponent} from "./Components/Shared/sidebar/sidebar.component";
 import {NavbarComponent} from "./Components/Shared/navbar/navbar.component";
-import {SignalerTicketComponent} from "./Components/signaler-ticket/signaler-ticket.component";
+import {SignalerTicketComponent} from "./Components/signaler-ticket-dialog/signaler-ticket.component";
 
 @Component({
   selector: 'app-root',

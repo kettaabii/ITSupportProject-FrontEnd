@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -6,21 +6,23 @@ import { AuthService } from "../../Core/services/auth.service";
 import { MatFormFieldModule, MatLabel } from "@angular/material/form-field";
 import { MatCardModule, MatCardContent } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatAnchor, MatButton } from "@angular/material/button";
+import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import { MatInput } from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatInput, MatButton, MatLabel, MatFormFieldModule, MatCardContent, MatCheckboxModule, MatAnchor, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatInput, MatButton, MatLabel, MatFormFieldModule, MatCardContent, MatCheckboxModule, MatAnchor, RouterLink, MatIconButton, MatIcon],
   templateUrl: './login.component.html',
   styleUrl:'login.component.css'
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  hide = signal(true);
   user = () => this.authService?.currentUser();
   isLoggedIn = () => this.authService?.isAuthenticated() ?? false;
-
+  errorMessage='';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -48,12 +50,18 @@ export class LoginComponent {
               this.router.navigate(['/user-dashboard']);
               break;
             default:
-              // Redirection par défaut si le rôle n'est pas reconnu
               this.router.navigate(['/dashboard']);
           }
         },
-        error: (err) => console.error('Login failed', err)
+        error: (err) => {
+          console.error('Login failed', err);
+          this.errorMessage = 'Username Or Password incorrect';
+        }
       });
     }
+  }
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
 }

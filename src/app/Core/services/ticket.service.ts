@@ -25,7 +25,7 @@ export class TicketService {
   }
 
   getTicketHistoryForMat(id:number):Observable<TicketHistoryDto[]>{
-    return this.http.get<TicketHistoryDto[]>(`${this.baseUrl}/admin/TicketsHistoryForMat/${id}`);
+    return this.http.get<TicketHistoryDto[]>(`${this.baseUrl}/shared/TicketsHistoryForMat/${id}`);
   }
 
   acceptTicket(id:number):Observable<string>{

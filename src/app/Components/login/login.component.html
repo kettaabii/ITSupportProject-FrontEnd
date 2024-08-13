@@ -6,7 +6,7 @@
           <mat-card-content class="p-32">
             <div class="text-center">
               <a [routerLink]="['/login']">
-                <img src="/assets/EVENTS.png" class="align-middle m-2" alt="logo" />
+                <img src="/assets/Support%20it%20logo.png" class="align-middle m-2" alt="logo" />
               </a>
             </div>
 
@@ -14,17 +14,29 @@
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input formControlName="username" matInput />
             </mat-form-field>
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+            <mat-label >Password</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input formControlName="password" type="password" matInput />
+              <input formControlName="password"  matInput [type]="hide() ? 'password' : 'text'" />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="clickEvent($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()"
+              >
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
             </mat-form-field>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
 
 
           </mat-card-content>
-          <mat-card-actions>
-            <div class="div-50">
-              <button type="submit" mat-raised-button color="primary">Login</button>
-            </div>
+          <mat-card-actions style="display: flex; justify-content: center;">
+
+              <button style="height: 3rem; border-radius: 6px;width:9rem;background-color: #00c7be;color:#ffffff !important;" type="submit" mat-raised-button >Login</button>
+
 
 
 

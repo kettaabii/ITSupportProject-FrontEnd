@@ -32,7 +32,7 @@ export class EquipementService {
   }
 
   getEquipementPerUser(id: number): Observable<Equipement[]> {
-    return this.http.get<Equipement[]>(`${this.baseUrl}/admin/equipementPerUser/${id}`);
+    return this.http.get<Equipement[]>(`${this.baseUrl}/shared/equipementPerUser/${id}`);
   }
 
   getEquipmentById(id: number): Observable<Equipement> {

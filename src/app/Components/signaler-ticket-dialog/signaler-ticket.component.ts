@@ -60,18 +60,31 @@ export class SignalerTicketComponent implements OnInit{
       typePanne:'' })
   }
 
-  loadPannneOptions(){
+  loadPannneOptions() {
     this.panneservice.getAllPannes().subscribe({
       next: (pannes) => (this.keys = pannes),
-      error:(err) => console.error('Error fetching pannes', err),
+      error: (err) => console.error('Error fetching pannes', err),
     });
   }
+    newTicket() {
+      const description = this.panneForm.value.descriptionPanne;
+      const idPanne = this.panneForm.value.typePanne; // ID of the selected Panne
+      const idUser = this.user()?.id; // Assuming the user object has an id property
+
+      if (idUser) {
+        const idMat=2;
+        this.panneservice
+          .signaler(description, idMat, idPanne,idUser)
+          .subscribe({
+            next: (response) => console.log('Ticket signaled successfully', response),
+            error: (err) => console.error('Error signaling ticket', err),
+          });
+      }
+    }
 
 
 
 
-  newTicket(){
 
-  }
 
 }

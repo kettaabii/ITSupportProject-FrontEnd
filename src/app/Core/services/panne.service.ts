@@ -11,7 +11,7 @@ export class PanneService {
  private baseUrl='http://localhost:8088'
   constructor(private http:HttpClient) { }
 
-  signaler(description: string, idMat: number, idPanne: number, idUser: number): Observable<string> {
+  signaler(description: string, idMat: number, idPanne: number,idUser:number): Observable<string> {
    const params ={description,idPanne}
     return this.http.post(`${this.baseUrl}/user/signaler/${idMat}/${idUser}`,null,{params,responseType:'text'});
   }

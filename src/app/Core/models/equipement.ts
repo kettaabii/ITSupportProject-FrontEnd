@@ -6,6 +6,7 @@ export interface Equipement {
   materialId: number;
   materialName: string;
   status: StatusMat;
+  picture:string;
   panneMaterialList?: EquipementPanne[];
   utilisateur?: User;
 }
