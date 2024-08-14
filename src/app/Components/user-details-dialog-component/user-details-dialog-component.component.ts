@@ -1,11 +1,16 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogClose, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
 import {User} from "../../Core/models/user";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-user-details-dialog-component',
   standalone: true,
-  imports: [],
+  imports: [
+    MatButton,
+    MatDialogTitle,
+    MatDialogClose
+  ],
   templateUrl: './user-details-dialog-component.component.html',
   styleUrl: './user-details-dialog-component.component.css'
 })

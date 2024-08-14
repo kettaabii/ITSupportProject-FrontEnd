@@ -1,8 +1,11 @@
-<h2>User Details</h2>
+<div style="padding: 1rem;">
+<h2 mat-dialog-title>User Details</h2>
 <p>ID: {{ user.id }}</p>
 <p>Username: {{ user.username }}</p>
 <p>Email: {{ user.email }}</p>
 <p>Phone: {{ user.phone }}</p>
-<button (click)="update()">Update</button>
-<button (click)="delete()">Delete</button>
-<button (click)="close()">Close</button>
+<div class="buttons" style="display: flex;justify-content: space-between;">
+<button  mat-flat-button  style="background-color: #4fd1c5" (click)="update()">Update</button>
+<button  mat-flat-button style="background-color: crimson" (click)="delete()">Delete</button>
+<button mat-dialog-close mat-flat-button (click)="close()">Close</button></div>
+ </div>

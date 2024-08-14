@@ -12,6 +12,7 @@ import {ListOfUserMaterialsComponent} from "./Components/list-of-user-materials/
 import {AddUserFormComponent} from "./Components/add-user-form/add-user-form.component";
 import {ListOfUsersComponent} from "./Components/list-of-users/list-of-users.component";
 import {AllMaterialsComponent} from "./Components/all-materials/all-materials.component";
+import {UtilisateursWrapperComponent} from "./Components/utilisateurs-wrapper/utilisateurs-wrapper.component";
 
 export const routes: Routes = [
   {
@@ -33,14 +34,18 @@ export const routes: Routes = [
         canActivate:[adminGuard]
       },
       {
-        path :"add-new-user",
-        component:AddUserFormComponent,
-        canActivate:[adminGuard]
-      },
-      {
         path :"listOfUsers",
-        component:ListOfUsersComponent,
-        canActivate:[adminGuard]
+        component:UtilisateursWrapperComponent,
+        canActivate:[adminGuard],
+        children :[
+          {
+            path :"",
+            component:AddUserFormComponent,
+            canActivate:[adminGuard]
+          }
+
+
+        ]
       },
       {
         path :"materials",

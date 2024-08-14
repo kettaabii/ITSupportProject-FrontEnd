@@ -16,6 +16,8 @@ import {
 } from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatButton} from "@angular/material/button";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UpdateUserDialogComponent} from "../update-user-dialog/update-user-dialog.component";
 
 @Component({
   selector: 'app-list-of-users',
@@ -46,7 +48,8 @@ export class ListOfUsersComponent implements OnInit,  AfterViewInit{
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    private router: Router
+    private snackBar: MatSnackBar
+
   ) {
     this.dataSource=new MatTableDataSource<User>([]);
   }
@@ -80,9 +83,25 @@ export class ListOfUsersComponent implements OnInit,  AfterViewInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'update') {
-        this.router.navigate(['/update-user', user.id]);
+        this.openUpdateDialog(user)
       } else if (result === 'delete') {
         this.deleteUser(user.id);
+      }
+    });
+  }
+
+  openUpdateDialog(user: User) {
+    const dialogRef = this.dialog.open(UpdateUserDialogComponent, {
+      width: '400px',
+      data: user
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open('Utilisateur mis à jour', 'Fermer', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+        this.loadUsers();
       }
     });
   }
@@ -90,9 +109,12 @@ export class ListOfUsersComponent implements OnInit,  AfterViewInit{
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe(
       (response) => {
-        console.log('User deleted successfully:', response);
         this.loadUsers();
+        this.snackBar.open('User deleted successfully:','fermer',{duration:3000
+        })
+
       },
+
       (error) => {
         console.error('Error deleting user:', error);
       }

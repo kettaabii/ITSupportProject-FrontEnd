@@ -1,7 +1,7 @@
-import {Component, signal} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatError, MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
@@ -11,6 +11,7 @@ import {tap} from "rxjs";
 import {CustomValidators} from "../../costum-validators.validator";
 import {NgIf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-add-user-form',
@@ -50,7 +51,8 @@ export class AddUserFormComponent {
 
   constructor(
     private router: Router,
-    private userService:UserService
+    private userService:UserService,
+    private snackBar: MatSnackBar
   ) { }
 
   register() {
@@ -58,9 +60,13 @@ export class AddUserFormComponent {
       return;
     }
     this.userService.newUser(this.registerForm.value).pipe(
-      // If registration was successfull, then navigate to login route
-      tap(() => this.router.navigate(['../login']))
-    ).subscribe();
+
+      tap(() => {
+        this.registerForm.reset();
+        this.snackBar.open('utilisateur Ajouté avec succes','fermer',{duration:3000})
+        this.router.navigate(['admin-dashboard/listOfUsers']);
+
+      })).subscribe();
   }
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
