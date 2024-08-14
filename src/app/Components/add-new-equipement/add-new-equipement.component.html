@@ -1,0 +1,29 @@
+<div class="equipment-form-container" style="padding: 1rem;">
+<h2 mat-dialog-title>Ajouter un nouvel équipement</h2>
+<form  [formGroup]="addForm" (ngSubmit)="newEquipement()">
+  <div style="display:flex; gap:1rem;">
+  <mat-form-field appearance="outline">
+    <mat-label>Nom de l'équipement</mat-label>
+    <input matInput formControlName="materialName" placeholder="Entrez le nom de l'équipement">
+    <mat-error *ngIf="addForm.get('materialName')?.hasError('required')">
+      Le nom de l'équipement est requis
+    </mat-error>
+  </mat-form-field>
+
+
+  <div class="file-input-container">
+    <button mat-raised-button color="primary" (click)="fileInput.click()" type="button">
+      <mat-icon>cloud_upload</mat-icon>
+      Choisir une image
+    </button>
+    <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none;" accept="image/*">
+    <span *ngIf="selectedFile">{{selectedFile.name}}</span>
+  </div>
+  </div>
+
+    <button mat-dialog-actions mat-raised-button color="primary" type="submit" [disabled]="!addForm.valid || !selectedFile">
+    Ajouter l'équipement
+  </button>
+</form>
+</div>
+

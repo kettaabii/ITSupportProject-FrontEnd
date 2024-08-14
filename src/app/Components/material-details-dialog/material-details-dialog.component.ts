@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogActions, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
 import {User} from "../../Core/models/user";
 import {MatButton} from "@angular/material/button";
 
@@ -7,7 +7,9 @@ import {MatButton} from "@angular/material/button";
   selector: 'app-material-details-dialog',
   standalone: true,
   imports: [
-    MatButton
+    MatButton,
+    MatDialogTitle,
+    MatDialogActions
   ],
   templateUrl: './material-details-dialog.component.html',
   styleUrl: './material-details-dialog.component.css'

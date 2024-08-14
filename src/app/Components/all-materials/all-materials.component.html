@@ -1,11 +1,14 @@
-<h3 >Tous les Équipements</h3>
+<div class="header" style="display: flex; justify-content: space-between; padding: 2rem;">
+  <h4 >Tous les Équipements</h4>
+  <button mat-stroked-button (click)="openAddDialog()" > Ajouter equipement</button>
+</div>
 <div class="equipments-container">
   <div class="equipments-list">
     @for (equipment of equipements; track equipment.materialId) {
       <mat-card>
         <article class="equipment-item">
           <div class="equipment-image">
-            <img [src]="equipment.picture || 'assets/placeholder.png'" alt="Equipment">
+            <img [src]="equipment.picture || '/assets/placeholder.jpg'" alt="Equipment">
           </div>
           <div class="equipment-details">
             <h3>{{equipment.materialName}}</h3>

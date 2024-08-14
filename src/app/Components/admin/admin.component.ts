@@ -9,6 +9,7 @@ import {MatIconButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {ListOfUsersComponent} from "../list-of-users/list-of-users.component";
+import {AddNewEquipementComponent} from "../add-new-equipement/add-new-equipement.component";
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +24,8 @@ import {ListOfUsersComponent} from "../list-of-users/list-of-users.component";
     MatIconButton,
     MatInput,
     MatIcon,
-    ListOfUsersComponent
+    ListOfUsersComponent,
+    AddNewEquipementComponent
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'

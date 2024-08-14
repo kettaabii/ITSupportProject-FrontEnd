@@ -8,6 +8,14 @@ import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {MaterialDetailsDialogComponent} from "../material-details-dialog/material-details-dialog.component";
 import {Router} from "@angular/router";
+import {User} from "../../Core/models/user";
+import {UpdateUserDialogComponent} from "../update-user-dialog/update-user-dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UpdateEquipementDialogComponent} from "../update-equipement-dialog/update-equipement-dialog.component";
+import {AddNewEquipementComponent} from "../add-new-equipement/add-new-equipement.component";
+import {
+  AssignerEquipementUtilisateurDialogComponent
+} from "../assigner-equipement-utilisateur-dialog/assigner-equipement-utilisateur-dialog.component";
 
 @Component({
   selector: 'app-all-materials',
@@ -25,7 +33,9 @@ import {Router} from "@angular/router";
 })
 export class AllMaterialsComponent implements OnInit {
   equipements:Equipement[]=[];
-  constructor(private equipementService:EquipementService,private dialog: MatDialog,private router: Router) {
+  constructor(private equipementService:EquipementService,
+              private dialog: MatDialog,
+              private snackBar:MatSnackBar) {
   }
 
 
@@ -43,16 +53,31 @@ export class AllMaterialsComponent implements OnInit {
   openModifyDialog(equipement: Equipement): void {
 
     const dialogRef=this.dialog.open(MaterialDetailsDialogComponent,
-      {width: '400px',minHeight:'200px'});
+      {width: '400px',maxHeight:'230px'});
 
   dialogRef.afterClosed().subscribe(result => {
   if (result === 'update') {
-  this.router.navigate(['/update-equipement', equipement.materialId]);
+  this.openUpdateDialog(equipement)
 } else if (result === 'delete') {
   this.deleteEquipement(equipement.materialId);
   this.getAllEquipements()
 }
 });}
+  openUpdateDialog(equipement: Equipement) {
+    const dialogRef = this.dialog.open(UpdateEquipementDialogComponent, {
+      width: '400px',
+      data: equipement
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open('Utilisateur mis à jour', 'Fermer', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+        this.getAllEquipements();
+      }
+    });
+  }
   deleteEquipement(id: number) {
     this.equipementService.deleteEquipement(id).subscribe(
       (response) => {
@@ -64,8 +89,11 @@ export class AllMaterialsComponent implements OnInit {
       }
     );
   }
-  openAssignerDialog(materialId:number){
-
+  openAssignerDialog(MaterialId: number){
+    const dialogRef = this.dialog.open(AssignerEquipementUtilisateurDialogComponent, {
+      width: '400px',
+      data:{MaterialId:MaterialId}
+    });
   }
 
   getStatusClass(status: string): string {
@@ -80,4 +108,18 @@ export class AllMaterialsComponent implements OnInit {
         return '';
     }
   }
+
+openAddDialog(){
+  const dialogRef = this.dialog.open(AddNewEquipementComponent, {
+    width: '500px',
+
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    this.getAllEquipements();
+  }
+
+
+)
+
+}
 }

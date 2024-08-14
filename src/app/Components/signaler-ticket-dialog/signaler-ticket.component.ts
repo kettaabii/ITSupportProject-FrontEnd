@@ -68,8 +68,8 @@ export class SignalerTicketComponent implements OnInit{
   }
     newTicket() {
       const description = this.panneForm.value.descriptionPanne;
-      const idPanne = this.panneForm.value.typePanne; // ID of the selected Panne
-      const idUser = this.user()?.id; // Assuming the user object has an id property
+      const idPanne = this.panneForm.value.typePanne;
+      const idUser = this.user()?.id;
 
       if (idUser) {
         const idMat=2;

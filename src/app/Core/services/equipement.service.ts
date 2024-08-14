@@ -28,7 +28,7 @@ export class EquipementService {
   }
 
   assignEquipementToUser(idMat: number, idUser: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}/admin/AssignEquipement${idMat}/ToUser/${idUser}`, {});
+    return this.http.put(`${this.baseUrl}/admin/AssignEquipement/${idMat}/ToUser/${idUser}`, {});
   }
 
   getEquipementPerUser(id: number): Observable<Equipement[]> {

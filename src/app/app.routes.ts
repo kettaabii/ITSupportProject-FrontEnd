@@ -13,6 +13,7 @@ import {AddUserFormComponent} from "./Components/add-user-form/add-user-form.com
 import {ListOfUsersComponent} from "./Components/list-of-users/list-of-users.component";
 import {AllMaterialsComponent} from "./Components/all-materials/all-materials.component";
 import {UtilisateursWrapperComponent} from "./Components/utilisateurs-wrapper/utilisateurs-wrapper.component";
+import {AddNewEquipementComponent} from "./Components/add-new-equipement/add-new-equipement.component";
 
 export const routes: Routes = [
   {
@@ -50,6 +51,11 @@ export const routes: Routes = [
       {
         path :"materials",
         component:AllMaterialsComponent,
+        canActivate:[adminGuard]
+      },
+      {
+        path :"NewEquipement",
+        component:AddNewEquipementComponent,
         canActivate:[adminGuard]
       }
 
