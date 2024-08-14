@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../Core/services/auth.service";
 
 @Component({
   selector: 'app-technician',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './technician.component.html',
   styleUrl: './technician.component.css'
 })
-export class TechnicianComponent {
+export class TechnicianComponent implements OnInit{
+
+  constructor() {
+  }
+
+  ngOnInit(){
+
+  }
 
 }

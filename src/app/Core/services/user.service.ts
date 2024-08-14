@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SignupRequest} from "../dtos/signup-request.dto";
 import {Observable} from "rxjs";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class UserService {
 
   deleteUser(id:number):Observable<string>{
     return this.http.delete(`${this.baseUrl}/admin/deleteUser/${id}`,{responseType:'text'});
+  }
+
+  allusers():Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseUrl}/admin/AllUsers`);
   }
 }

@@ -27,8 +27,8 @@
           <span class="nav-text">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
+      <li *ngIf="userRole() === 'ADMIN' || userRole() === 'USER'" class="nav-item">
+        <a routerLink="" class="nav-link">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/9c383df9735b92a21d715a1e7200e5e5ae41d4c01fb9862fd66a0e3a93dd02d8?placeholderIfAbsent=true&apiKey=b26b76cab5d0429798dcacbab026faef"
@@ -38,8 +38,8 @@
           <span class="nav-text">Materiel</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
+      <li *ngIf="userRole()==='ADMIN'" class="nav-item">
+        <a routerLink="admin-dashboard" class="nav-link">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c760239209adc0b23ea61e4f83a59e633e454a01ae5169f34e603397187639af?placeholderIfAbsent=true&apiKey=b26b76cab5d0429798dcacbab026faef"
@@ -49,8 +49,8 @@
           <span class="nav-text">Techniciens</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
+      <li *ngIf="userRole()==='ADMIN'" class="nav-item">
+        <a routerLink="listOfUsers" class="nav-link">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/665e15fa236e070179648c7481e52347892e811a7361b1c648fc4bdef502b273?placeholderIfAbsent=true&apiKey=b26b76cab5d0429798dcacbab026faef"
@@ -60,7 +60,7 @@
           <span class="nav-text">Utilisateurs</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="userRole()==='ADMIN' ||userRole()==='TECHNICIAN'" class="nav-item">
         <a href="#" class="nav-link">
           <img
             loading="lazy"

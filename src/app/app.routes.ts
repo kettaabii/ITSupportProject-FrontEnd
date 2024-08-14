@@ -10,6 +10,7 @@ import {PendingTicketsComponent} from "./Components/pending-tickets/pending-tick
 import {SignalerTicketComponent} from "./Components/signaler-ticket-dialog/signaler-ticket.component";
 import {ListOfUserMaterialsComponent} from "./Components/list-of-user-materials/list-of-user-materials.component";
 import {AddUserFormComponent} from "./Components/add-user-form/add-user-form.component";
+import {ListOfUsersComponent} from "./Components/list-of-users/list-of-users.component";
 
 export const routes: Routes = [
   {
@@ -26,13 +27,18 @@ export const routes: Routes = [
     canActivate:[adminGuard],
     children :[
       {
-        path :"pending-tickets",
+        path :"",
         component:PendingTicketsComponent,
         canActivate:[adminGuard]
       },
       {
         path :"add-new-user",
         component:AddUserFormComponent,
+        canActivate:[adminGuard]
+      },
+      {
+        path :"listOfUsers",
+        component:ListOfUsersComponent,
         canActivate:[adminGuard]
       }
     ]

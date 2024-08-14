@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatError, MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {MatButton} from "@angular/material/button";
+import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import {AuthService} from "../../Core/services/auth.service";
 import {UserService} from "../../Core/services/user.service";
 import {tap} from "rxjs";
 import {CustomValidators} from "../../costum-validators.validator";
 import {NgIf} from "@angular/common";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-add-user-form',
@@ -24,12 +25,16 @@ import {NgIf} from "@angular/common";
     MatError,
     MatInput,
     MatButton,
-    NgIf
+    NgIf,
+    MatIcon,
+    MatIconButton,
+    MatAnchor
   ],
   templateUrl: './add-user-form.component.html',
   styleUrl: './add-user-form.component.css'
 })
 export class AddUserFormComponent {
+  hide = signal(true);
   registerForm = new FormGroup({
 
 
@@ -56,6 +61,10 @@ export class AddUserFormComponent {
       // If registration was successfull, then navigate to login route
       tap(() => this.router.navigate(['../login']))
     ).subscribe();
+  }
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
 
 }
