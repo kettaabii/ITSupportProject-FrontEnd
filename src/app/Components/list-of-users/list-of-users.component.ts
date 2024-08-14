@@ -91,7 +91,7 @@ export class ListOfUsersComponent implements OnInit,  AfterViewInit{
     this.userService.deleteUser(id).subscribe(
       (response) => {
         console.log('User deleted successfully:', response);
-        this.loadUsers(); // Reload the user list after deletion
+        this.loadUsers();
       },
       (error) => {
         console.error('Error deleting user:', error);

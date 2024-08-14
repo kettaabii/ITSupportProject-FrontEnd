@@ -11,6 +11,7 @@ import {SignalerTicketComponent} from "./Components/signaler-ticket-dialog/signa
 import {ListOfUserMaterialsComponent} from "./Components/list-of-user-materials/list-of-user-materials.component";
 import {AddUserFormComponent} from "./Components/add-user-form/add-user-form.component";
 import {ListOfUsersComponent} from "./Components/list-of-users/list-of-users.component";
+import {AllMaterialsComponent} from "./Components/all-materials/all-materials.component";
 
 export const routes: Routes = [
   {
@@ -40,7 +41,13 @@ export const routes: Routes = [
         path :"listOfUsers",
         component:ListOfUsersComponent,
         canActivate:[adminGuard]
+      },
+      {
+        path :"materials",
+        component:AllMaterialsComponent,
+        canActivate:[adminGuard]
       }
+
     ]
   },
   {
