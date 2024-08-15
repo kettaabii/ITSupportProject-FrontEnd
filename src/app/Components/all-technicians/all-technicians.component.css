@@ -1,0 +1,103 @@
+.technicians-container {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  width: 100%;
+  max-height: 600px;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.technician-item {
+
+  min-width: 15rem;
+  max-width: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 14px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+.technicians-list {
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f9f9f9;
+}
+
+.equipment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.equipment-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.equipment-content {
+  display: flex;
+  align-items: center;
+}
+
+.equipment-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.equipment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.equipment-details h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+mat-chip {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.status-disponible{
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
+.status-undisponible {
+  background-color: rgba(255, 192, 76, 0.8) !important;
+  color: white !important;
+}
+
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-stroked-button {
+  padding: 4px 8px;
+  font-size: 14px;
+}
+

@@ -27,4 +27,8 @@ export class TechnicianService {
   getAvailableTechnicians():Observable<Technician[]>{
     return this.http.get<Technician[]>(`${this.baseUrl}/admin/AvailableTechnicians`);
   }
+
+  getAllTechnicians():Observable<Technician[]>{
+    return this.http.get<Technician[]>(`${this.baseUrl}/admin/AllTechnicians`);
+  }
 }

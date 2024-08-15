@@ -3,11 +3,12 @@
   <div *ngFor="let ticket of pendingTickets" class="ticket-card">
     <div class="ticket-header">
       <h3>{{ticket.panneTitre}}</h3>
-      <button mat-raised-button color="primary" (click)="openDialog(ticket.id)">Assigner</button>
+      <p>{{ticket.dateSignalement | date: 'longDate'}}</p>
+
     </div>
     <div class="ticket-details">
       <p>Panne : {{ ticket.panneDescription}}</p>
-      <p>Equipement : {{ ticket.dateSignalement}}</p>
     </div>
+    <button mat-raised-button color="primary" (click)="openDialog(ticket.id)">Assigner</button>
   </div>
 </div>

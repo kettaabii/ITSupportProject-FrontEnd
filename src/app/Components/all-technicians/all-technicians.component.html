@@ -1,0 +1,19 @@
+<div class="header" style="display: flex; justify-content: space-between; padding: 2rem;">
+  <h4>Tous les Techniciens</h4>
+  <button mat-stroked-button (click)="openAddDialog()">Ajouter Technicien</button>
+</div>
+<div class="technicians-container">
+  <div class="technicians-list">
+    <mat-card *ngFor="let technician of technicians" (click)="openModifyDialog(technician)">
+      <article class="technician-item">
+        <div class="technician-details">
+          <h3>{{ technician.username }}</h3>
+          <p>{{technician.email}}</p>
+          <mat-chip [ngClass]="getStatusClass(technician.inDuty)">
+            {{ technician.inDuty}}
+          </mat-chip>
+        </div>
+      </article>
+    </mat-card>
+  </div>
+</div>

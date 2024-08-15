@@ -1,11 +1,13 @@
-<h2>Select a Technician</h2>
-<mat-radio-group [(ngModel)]="selectedTechnician">
-  <mat-radio-button *ngFor="let technician of technicians" [value]="technician">
+<div style="padding: 1rem;">
+<h2 mat-dialog-title >Select a Technician</h2>
+<mat-select [(ngModel)]="selectedTechnician">
+  <mat-option *ngFor="let technician of technicians" [value]="technician">
     {{ technician.username}}
-  </mat-radio-button>
-</mat-radio-group>
+  </mat-option>
+</mat-select>
 
-<div class="dialog-actions">
+<div mat-dialog-actions style="display: flex; justify-content: space-between;" class="dialog-actions">
   <button mat-button (click)="cancel()">Cancel</button>
   <button mat-raised-button color="primary" (click)="assignTechnician()">Assign</button>
+</div>
 </div>

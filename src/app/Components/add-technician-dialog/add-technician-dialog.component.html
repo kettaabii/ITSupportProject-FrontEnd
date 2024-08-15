@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Ajouter Nouvel Utilisateur</h2>
+
+  <form [formGroup]="addTechnicianForm" (ngSubmit)="register()">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <input type="text" matInput placeholder="Username" formControlName="username">
+        <mat-error *ngIf="addTechnicianForm.get('username')?.touched && addTechnicianForm.get('username')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input type="email" matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="addTechnicianForm.get('email')?.touched && addTechnicianForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="addTechnicianForm.get('email')?.touched && addTechnicianForm.get('email')?.hasError('email')">
+          Please enter a valid email
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="w-100">
+        <input  matInput [type]="hide() ? 'password' : 'text'" placeholder="Password" formControlName="password">
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="addTechnicianForm.get('password')?.touched && addTechnicianForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input type="password" matInput placeholder="Confirm Password" formControlName="passwordConfirm">
+        <mat-error *ngIf="addTechnicianForm.get('passwordConfirm')?.touched && addTechnicianForm.get('passwordConfirm')?.hasError('required')">
+          Password confirmation is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-error *ngIf="addTechnicianForm.hasError('passwordsNotMatching') && addTechnicianForm.get('passwordConfirm')?.touched">
+      Passwords do not match
+    </mat-error>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <input  type="text" matInput placeholder="Phone number" formControlName="phone">
+        <mat-error *ngIf="addTechnicianForm.get('phone')?.touched && addTechnicianForm.get('phone')?.hasError('required')">
+          Phone number is required
+        </mat-error>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="!addTechnicianForm.valid">
+        Ajouter →
+      </button>
+    </div>
+  </form>
+</div>

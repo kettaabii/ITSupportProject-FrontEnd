@@ -14,6 +14,8 @@ import {ListOfUsersComponent} from "./Components/list-of-users/list-of-users.com
 import {AllMaterialsComponent} from "./Components/all-materials/all-materials.component";
 import {UtilisateursWrapperComponent} from "./Components/utilisateurs-wrapper/utilisateurs-wrapper.component";
 import {AddNewEquipementComponent} from "./Components/add-new-equipement/add-new-equipement.component";
+import {AllTechniciansComponent} from "./Components/all-technicians/all-technicians.component";
+import {AddNewTechnicianComponent} from "./Components/add-new-technician/add-new-technician.component";
 
 export const routes: Routes = [
   {
@@ -56,6 +58,16 @@ export const routes: Routes = [
       {
         path :"NewEquipement",
         component:AddNewEquipementComponent,
+        canActivate:[adminGuard]
+      },
+      {
+        path :"technicians",
+        component:AllTechniciansComponent,
+        canActivate:[adminGuard]
+      },
+      {
+        path :"NewTechnician",
+        component:AddNewTechnicianComponent,
         canActivate:[adminGuard]
       }
 

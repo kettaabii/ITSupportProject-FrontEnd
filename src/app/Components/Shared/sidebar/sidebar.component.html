@@ -17,7 +17,7 @@
   <nav class="sidebar-nav">
     <ul class="nav-list">
       <li class="nav-item active">
-        <a href="#" class="nav-link">
+        <a routerLink="admin-dashboard/#" class="nav-link">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/9598df759659b108377a63b95176f47749dc5e6bdb68f64482e8d8b838b7a903?placeholderIfAbsent=true&apiKey=b26b76cab5d0429798dcacbab026faef"
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li *ngIf="userRole()==='ADMIN'" class="nav-item">
-        <a routerLink="admin-dashboard" class="nav-link">
+        <a routerLink="technicians" class="nav-link">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c760239209adc0b23ea61e4f83a59e633e454a01ae5169f34e603397187639af?placeholderIfAbsent=true&apiKey=b26b76cab5d0429798dcacbab026faef"

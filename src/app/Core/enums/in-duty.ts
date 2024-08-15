@@ -1,0 +1,4 @@
+export enum InDuty {
+  DISPONIBLE='DISPONIBLE',
+  UNDISPONIBLE='UNDISPONIBLE'
+}

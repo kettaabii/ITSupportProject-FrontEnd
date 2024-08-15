@@ -13,7 +13,7 @@ export class TicketService {
   constructor(private http:HttpClient) { }
 
   assignTicketToTechnician(idTicket:number ,idTechnician:number):Observable<void>{
-    return this.http.put<void>(`${this.baseUrl}/ng sadmin/AssignTicket/${idTicket}/ToTechnician/${idTechnician}`,null);
+    return this.http.put<void>(`${this.baseUrl}/admin/AssignTicket/${idTicket}/ToTechnician/${idTechnician}`,null);
   }
 
   getTicketsByTec(id:number):Observable<Ticket[]>{

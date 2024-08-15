@@ -1,11 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogActions, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
 import {TechnicianService} from '../../Core/services/technician.service';
 import {Technician} from '../../Core/models/technician';
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {MatOption} from "@angular/material/core";
+import {MatSelect} from "@angular/material/select";
 
 @Component({
   selector: 'app-assign-technician-dialog',
@@ -17,7 +19,11 @@ import {MatButton} from "@angular/material/button";
     FormsModule,
     MatRadioButton,
     NgForOf,
-    MatButton
+    MatButton,
+    MatDialogTitle,
+    MatDialogActions,
+    MatOption,
+    MatSelect
   ]
 })
 export class AssignTechnicianDialogComponent implements OnInit {
