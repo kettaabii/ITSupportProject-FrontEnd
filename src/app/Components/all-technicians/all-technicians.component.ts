@@ -8,6 +8,10 @@ import {MatChip} from "@angular/material/chips";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {AddTechnicianDialogComponent} from "../add-technician-dialog/add-technician-dialog.component";
+import {UpdateTechnicianDialogComponent} from "../update-technician-dialog/update-technician-dialog.component";
+import {MaterialDetailsDialogComponent} from "../material-details-dialog/material-details-dialog.component";
+import {Equipement} from "../../Core/models/equipement";
+import {UpdateEquipementDialogComponent} from "../update-equipement-dialog/update-equipement-dialog.component";
 
 @Component({
   selector: 'app-all-technicians',
@@ -50,7 +54,48 @@ export class AllTechniciansComponent implements OnInit{
 
 
   }
-  openModifyDialog(technician:Technician){}
+  openModifyDialog(technician:Technician) {
+    const dialogRef = this.dialog.open(MaterialDetailsDialogComponent,
+      {width: '400px', maxHeight: '230px'});
+    dialogRef.afterClosed().subscribe(res => {
+      if (res === 'update') {
+        this.openUpdateDialog(technician)
+      } else if (res === 'delete') {
+        this.deleteEquipement(technician.id);
+        this.getAllTechnicians()
+      }
+    });
+  }
+    openUpdateDialog(technician: Technician) {
+      const dialogRef = this.dialog.open(UpdateTechnicianDialogComponent, {
+        width: '400px',
+        data: technician
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.snackBar.open('Utilisateur mis à jour', 'Fermer', {
+            duration: 3000,
+            panelClass: ['green-snackbar']
+          });
+          this.getAllTechnicians();
+        }
+      });
+    }
+  deleteEquipement(id: number) {
+    this.technicianService.deleteTechnician(id).subscribe(
+      (response) => {
+        this.snackBar.open('Technicien supprimé aves succes ','fermer',{duration:3000})
+        this.getAllTechnicians();
+      },
+      (error) => {
+        console.error('Error deleting user:', error);
+      }
+    );
+  }
+
+
+
+
 
 
     getStatusClass(inDuty: string): string {

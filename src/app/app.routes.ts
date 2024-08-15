@@ -16,6 +16,7 @@ import {UtilisateursWrapperComponent} from "./Components/utilisateurs-wrapper/ut
 import {AddNewEquipementComponent} from "./Components/add-new-equipement/add-new-equipement.component";
 import {AllTechniciansComponent} from "./Components/all-technicians/all-technicians.component";
 import {AddNewTechnicianComponent} from "./Components/add-new-technician/add-new-technician.component";
+import {PannesListComponent} from "./Components/pannes-list/pannes-list.component";
 
 export const routes: Routes = [
   {
@@ -69,7 +70,13 @@ export const routes: Routes = [
         path :"NewTechnician",
         component:AddNewTechnicianComponent,
         canActivate:[adminGuard]
+      },
+      {
+        path :"pannes",
+        component:PannesListComponent,
+        canActivate:[adminGuard]
       }
+
 
     ]
   },

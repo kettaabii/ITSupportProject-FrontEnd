@@ -1,0 +1,17 @@
+<div class="tickets-container">
+  <div class="header" style="display: flex; justify-content: space-between; padding: 2rem;">
+    <h4 >Tous les Équipements</h4>
+    <button mat-stroked-button (click)="openAddDialog()" > Ajouter Panne</button>
+  </div>
+  <div *ngFor="let panne of listpannes" class="ticket-card">
+    <div class="ticket-header">
+      <h3>{{panne.panneTitle}}</h3>
+      <p>{{ panne.typePanne}}</p>
+
+    </div>
+    <div class="ticket-details">
+      <p>Panne : {{ panne.panneDescription}}</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="openDialog(panne)">options</button>
+  </div>
+</div>

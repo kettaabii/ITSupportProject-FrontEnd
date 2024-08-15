@@ -32,4 +32,8 @@ export class PanneService {
    return this.http.get<Panne[]>(`${this.baseUrl}/shared/allPanne`);
   }
 
+  deletePanne(id:number):Observable<any>{
+   return this.http.delete(`${this.baseUrl}/admin/deletePanne/${id}`);
+  }
+
 }
