@@ -21,6 +21,7 @@ import {MatChip} from "@angular/material/chips";
 import {TicketService} from "../../Core/services/ticket.service";
 import {TicketHistoryDto} from "../../Core/dtos/ticket-history-dto.dto";
 import {StatusTicketDialogComponent} from "../status-ticket-dialog/status-ticket-dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -55,7 +56,8 @@ export class ListOfUserMaterialsComponent implements OnInit {
               private authService: AuthService,
               private dialog: MatDialog,
               private panneservice: PanneService,
-              private ticketService:TicketService) {
+              private ticketService:TicketService,
+              private snackbar:MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -75,27 +77,20 @@ export class ListOfUserMaterialsComponent implements OnInit {
 
   }
 
-  openDialog(idMat: number): void {
+  openDialog(equipement: Equipement): void {
     const dialogRef = this.dialog.open(SignalerTicketComponent, {
-      data: {idMat},
+      data: equipement,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.signalerTicket(result.description, result.panneId, idMat);
+        this.snackbar.open('votre panne est signalée ','fermer',{duration:3000})
+        this.getMaterial();
       }
     });
   }
 
-  signalerTicket(description: string, idPanne: number, idMat: number): void {
-    const idUser = this.user()?.id;
-    if (idUser) {
-      this.panneservice.signaler(description, idMat, idPanne,idUser).subscribe({
-        next: (response) => console.log('Ticket signaled successfully', response),
-        error: (err) => console.error('Error signaling ticket', err),
-      });
-    }
-  }
+
   getStatusClass(status: string): string {
     switch (status.toLowerCase()) {
       case 'bon':

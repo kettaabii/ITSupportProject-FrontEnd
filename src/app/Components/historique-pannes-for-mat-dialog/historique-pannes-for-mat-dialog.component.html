@@ -1,0 +1,15 @@
+<h2>Historique des Pannes</h2>
+<div *ngIf="tickets.length > 0; else noTickets">
+  <ul>
+    <li *ngFor="let ticket of tickets">
+      <strong>{{ ticket.dateSignalement }}</strong>: {{ ticket.panneDescription}}
+    </li>
+  </ul>
+</div>
+<ng-template #noTickets>
+  <p>Aucun historique disponible.</p>
+</ng-template>
+<div class="dialog-actions">
+  <button mat-button (click)="closeDialog()">Fermer</button>
+</div>
+

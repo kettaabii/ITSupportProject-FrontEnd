@@ -12,6 +12,7 @@
 }
 .equipment-item {
   min-width: 15rem;
+  max-width: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;

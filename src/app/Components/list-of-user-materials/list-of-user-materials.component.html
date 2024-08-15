@@ -3,7 +3,7 @@
   <div class="equipments-list">
     @for (equipment of equipements; track equipment.materialId) {
       <mat-card>
-      <article class="equipment-item">
+      <article class="equipment-item" >
         <div class="equipment-image">
             <img [src]="equipment.picture || 'assets/placeholder.png'" alt="Equipment">
           </div>
@@ -15,7 +15,7 @@
           </div>
       </article>
       <mat-card-actions>
-        <button mat-stroked-button color="primary" *ngIf="equipment.status === 'BON'" (click)="openDialog(equipment.materialId)">
+        <button mat-stroked-button color="primary" *ngIf="equipment.status === 'BON'" (click)="openDialog(equipment)">
           Signaler
         </button>
         <button mat-stroked-button color="primary" *ngIf="equipment.status !== 'BON'" (click)="viewStatus(equipment.materialId)">

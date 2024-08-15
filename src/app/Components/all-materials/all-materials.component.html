@@ -5,7 +5,7 @@
 <div class="equipments-container">
   <div class="equipments-list">
     @for (equipment of equipements; track equipment.materialId) {
-      <mat-card>
+      <mat-card (click)="openPanneHistoryDialog(equipment.materialId)">
         <article class="equipment-item">
           <div class="equipment-image">
             <img [src]="equipment.picture || '/assets/placeholder.jpg'" alt="Equipment">
@@ -22,7 +22,7 @@
           <button mat-stroked-button color="primary" *ngIf="equipment.status === 'BON'||equipment.status === 'PANNE'||equipment.status === 'HORS_SERVICE'" (click)="openModifyDialog(equipment)">
             Modifier
           </button>
-          <button mat-stroked-button color="primary" *ngIf="equipment.status === 'HORS_SERVICE'" (click)="openAssignerDialog(equipment.materialId)">
+          <button mat-stroked-button color="primary" *ngIf="equipment.status === 'HORS_SERVICE'" (click)="openAssignerDialog(equipment)">
             Assigner
           </button>
         </mat-card-actions>
